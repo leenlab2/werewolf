@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        playerBody = _player.GetComponent<Rigidbody>();
+        playerBody = _player.GetComponentInChildren<Rigidbody>();
 
         walkingDirection = Vector2.zero;
         cameraDirection = Vector2.zero;
