@@ -62,7 +62,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 580102975855031260}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: MovePlayer
+        m_MethodName: UpdatePlayerVelocity
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -75,7 +75,19 @@ MonoBehaviour:
     m_ActionId: e5bcd218-bf3e-4144-9705-ddcad9474b6c
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 580102975855031260}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: UpdateCameraDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e66be9ce-4ed6-4e35-9c25-0155ffdc550f
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
@@ -141,3 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _speed: 10
+  mouseSensitivity: 1
