@@ -345,8 +345,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5414ef5ec05048f4fafe7c2c130fd909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slots:
-  - item: {fileID: 0}
-    count: 3
-  - item: {fileID: 0}
-    count: 0
+  _slots: []
