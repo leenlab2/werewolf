@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
+  inventory: {fileID: 0}
   isSneaking: 0
   glitchedHP: 0
   appetiteEnabled: 1
@@ -338,11 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5414ef5ec05048f4fafe7c2c130fd909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slots:
-  - item: {fileID: 0}
-    count: 3
-  - item: {fileID: 0}
-    count: 0
+  _slots: []
 --- !u!114 &4468120145023640859
 MonoBehaviour:
   m_ObjectHideFlags: 0

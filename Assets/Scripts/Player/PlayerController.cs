@@ -12,12 +12,12 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance { get; private set; }
     private PlayerHP healthPoints;
     private PlayerMovement playerMovement;
-    public Inventory inventory;
+    [HideInInspector] public Inventory inventory;
 
-    public bool isSneaking = false;
-    public bool glitchedHP = false;
-    public bool appetiteEnabled = true;
-    public bool axeEnabled = true;
+    [HideInInspector] public bool isSneaking = false;
+    [HideInInspector] public bool glitchedHP = false;
+    [HideInInspector] public bool appetiteEnabled = true;
+    [HideInInspector] public bool axeEnabled = true;
 
     private void Start()
     {

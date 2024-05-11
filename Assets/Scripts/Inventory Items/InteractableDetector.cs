@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractableDetector : MonoBehaviour
 {
@@ -23,14 +24,24 @@ public class InteractableDetector : MonoBehaviour
 
         Debug.DrawRay(origin, direction * maxPlayerReach, Color.red);
 
+        detectedItem = null;
         // Perform raycast
         if (Physics.SphereCast(originRay, sphereRadius, out hit, maxPlayerReach, interactableLayer))
         {
-            if (hit.collider.TryGetComponent(out Item item) && item != detectedItem)
+            if (hit.transform.parent.TryGetComponent(out Item item))
             {
                 detectedItem = item;
                 OnItemHitChange?.Invoke(detectedItem);
             }
+        }
+    }
+
+    public void InteractWithItem(InputAction.CallbackContext ctx)
+    {
+        if (detectedItem != null && ctx.performed)
+        {
+            Debug.Log("Interacting with item " + detectedItem.gameObject.name);
+            detectedItem.Interact();
         }
     }
 }
