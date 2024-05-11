@@ -23,6 +23,18 @@ public class GameLoader : MonoBehaviour
 
     public void StartGame()
     {
+        // Wait until audio source attached to main menu finishes playing
+        AudioSource audioSource = GameObject.Find("Main Menu").transform.Find("Start").GetComponent<AudioSource>();   
+        StartCoroutine(WaitForAudio(audioSource));
+    }
+
+    IEnumerator WaitForAudio(AudioSource audioSource)
+    {
+        while (audioSource.isPlaying)
+        {
+            yield return null;
+        }
+
         StartCoroutine(LoadYourAsyncScene(_mainScene));
     }
 
