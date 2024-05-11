@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool glitchedHP = false;
     [HideInInspector] public bool appetiteEnabled = true;
     [HideInInspector] public bool axeEnabled = true;
+    [HideInInspector] public bool isWerewolf = false;
 
     private void Start()
     {
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void InitPlayerState(int numDeaths)
+    public void InitPlayerState(int numDeaths)
     {
         healthPoints.Heal(healthPoints._maxHealth);
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
         glitchedHP = numDeaths >= 1;
         appetiteEnabled = numDeaths < 2;
         axeEnabled = numDeaths < 4;
+        isWerewolf = numDeaths >= 4;
     }
 
     public void TakeDamage(int damage)
@@ -84,9 +86,11 @@ public class PlayerController : MonoBehaviour
 
     public void AttackAttempt(int damage)
     {
+        Debug.Log("Trying to attack!");
         GameObject enemy = FindClosestEnemy();
         if (enemy != null)
         {
+            Debug.Log("HIT!");
             enemy.GetComponent<HealthPoints>().TakeDamage(damage);
         }
     }
