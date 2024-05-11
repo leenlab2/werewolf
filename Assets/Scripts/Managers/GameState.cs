@@ -10,5 +10,6 @@ public class GameState : MonoBehaviour
     public static void OnPlayerDeath()
     {
         numDeaths++;
+        Debug.Log("Player has died " + numDeaths + " times.");
     }
 }

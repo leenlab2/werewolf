@@ -45,11 +45,20 @@ public class PlayerController : MonoBehaviour
         {
             spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
             InitPlayerState(GameState.numDeaths);
+        } else
+        {
+            inventory.enabled = false;
+            healthPoints.enabled = false;
+            GetComponent<InteractableDetector>().enabled = false;
         }
     }
 
     public void InitPlayerState(int numDeaths)
     {
+        inventory.enabled = true;
+        healthPoints.enabled = true;
+        GetComponent<InteractableDetector>().enabled = true;
+
         healthPoints.Heal(healthPoints._maxHealth);
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
         playerMovement.ChangeBaseSpeed(numDeaths / 5f + 1f);

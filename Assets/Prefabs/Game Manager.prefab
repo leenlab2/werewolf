@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuSceneName: Main Menu
   _gameSceneName: Game World
+  _gameOverSceneName: Game Over
 --- !u!114 &3070281176514798672
 MonoBehaviour:
   m_ObjectHideFlags: 0

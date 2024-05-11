@@ -9,6 +9,7 @@ public class GameLoader : MonoBehaviour
 
     [SerializeField] private string _menuSceneName;
     [SerializeField] public string _gameSceneName;
+    [SerializeField] private string _gameOverSceneName;
 
     private void Start()
     {
@@ -22,6 +23,13 @@ public class GameLoader : MonoBehaviour
         }
 
         StartCoroutine(LoadSceneAndActivate(_menuSceneName));
+
+        PlayerHP.OnPlayerDeath += HandleDeath;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerHP.OnPlayerDeath -= HandleDeath;
     }
 
     public void StartGame()
@@ -35,6 +43,32 @@ public class GameLoader : MonoBehaviour
         Debug.Log("Game is exiting");
     }
 
+    private void HandleDeath()
+    {
+        if (GameState.numDeaths < 5)
+        {
+            GameState.OnPlayerDeath();
+            StartCoroutine(ResetSequence());
+        }
+        else
+        {
+            EndGame();
+        }
+    }
+
+    private IEnumerator ResetSequence()
+    {
+        yield return LoadSceneAndActivate(_gameOverSceneName);
+
+        yield return new WaitForSeconds(3);
+
+        StartCoroutine(LoadSceneAndActivate(_gameSceneName));
+    }
+
+    private void EndGame()
+    {
+        StartCoroutine(LoadSceneAndActivate(_menuSceneName));
+    }
 
     public IEnumerator LoadSceneAndActivate(string scene)
     {
