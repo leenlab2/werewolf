@@ -37,6 +37,11 @@ public class GameLoader : MonoBehaviour
         StartCoroutine(LoadSceneAndActivate(_gameSceneName));
     }
 
+    public void LoadMenu()
+    {
+        StartCoroutine(LoadSceneAndActivate(_menuSceneName));
+    }
+
     public static void QuitGame()
     {
         Application.Quit();
