@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateCameraDirection(InputAction.CallbackContext ctx)
     {
-        cameraDirection = ctx.ReadValue<Vector2>() * mouseSensitivity;
+        cameraDirection = ctx.ReadValue<Vector2>() * Time.deltaTime * mouseSensitivity;
     }
 
     public void Run(InputAction.CallbackContext ctx)
