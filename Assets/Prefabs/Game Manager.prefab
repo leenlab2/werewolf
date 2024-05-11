@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e35346f3a253b46b41d87c65437c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainScene: Main
+  _menuSceneName: Main Menu
+  _gameSceneName: Game World
+  _gameOverSceneName: Game Over
 --- !u!114 &3070281176514798672
 MonoBehaviour:
   m_ObjectHideFlags: 0

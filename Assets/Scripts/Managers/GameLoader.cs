@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameLoader : MonoBehaviour
 {
     public static GameLoader instance;
-    [SerializeField] private string _mainScene;
+
+    [SerializeField] private string _menuSceneName;
+    [SerializeField] public string _gameSceneName;
+    [SerializeField] private string _gameOverSceneName;
 
     private void Start()
     {
@@ -18,52 +21,80 @@ public class GameLoader : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+
+        StartCoroutine(LoadSceneAndActivate(_menuSceneName));
+
+        PlayerHP.OnPlayerDeath += HandleDeath;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerHP.OnPlayerDeath -= HandleDeath;
     }
 
     public void StartGame()
     {
-        // Wait until audio source attached to main menu finishes playing
-        AudioSource audioSource = GameObject.Find("Main Menu").transform.Find("Start").GetComponent<AudioSource>();   
-        StartCoroutine(WaitForAudio(audioSource));
+        StartCoroutine(LoadSceneAndActivate(_gameSceneName));
     }
 
-    IEnumerator WaitForAudio(AudioSource audioSource)
-    {
-        while (audioSource.isPlaying)
-        {
-            yield return null;
-        }
-
-        StartCoroutine(LoadYourAsyncScene(_mainScene));
-    }
-
-    public void QuitGame()
+    public static void QuitGame()
     {
         Application.Quit();
         Debug.Log("Game is exiting");
     }
 
-    private void OnApplicationFocus(bool focus)
+    private void HandleDeath()
     {
-        if (focus && SceneManager.GetActiveScene().name == _mainScene)
+        if (GameState.numDeaths < 5)
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            GameState.OnPlayerDeath();
+            StartCoroutine(ResetSequence());
         }
         else
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            EndGame();
         }
     }
 
-    public static IEnumerator LoadYourAsyncScene(string scene)
+    private IEnumerator ResetSequence()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        yield return LoadSceneAndActivate(_gameOverSceneName);
+
+        yield return new WaitForSeconds(3);
+
+        StartCoroutine(LoadSceneAndActivate(_gameSceneName));
+    }
+
+    private void EndGame()
+    {
+        StartCoroutine(LoadSceneAndActivate(_menuSceneName));
+    }
+
+    public IEnumerator LoadSceneAndActivate(string scene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        Scene activeScene = SceneManager.GetActiveScene();
+        if (activeScene != gameObject.scene)
+        {
+            StartCoroutine(UnLoadSceneAsync(activeScene.name));
+        }
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
+    }
+
+    public static IEnumerator UnLoadSceneAsync(string scene)
+    {
+        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(scene);
+
+        // Wait until the asynchronous scene fully unloads
+        while (!asyncUnload.isDone)
         {
             yield return null;
         }

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(PlayerHP))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Transform spawnPoint;
+    private Transform spawnPoint;
 
     public static PlayerController instance { get; private set; }
     private PlayerHP healthPoints;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool glitchedHP = false;
     [HideInInspector] public bool appetiteEnabled = true;
     [HideInInspector] public bool axeEnabled = true;
+    [HideInInspector] public bool isWerewolf = false;
 
     private void Start()
     {
@@ -34,11 +36,29 @@ public class PlayerController : MonoBehaviour
         inventory = GetComponent<Inventory>();
         playerMovement = FindAnyObjectByType<PlayerMovement>();
 
-        InitPlayerState(GameState.numDeaths);
+        SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
-    private void InitPlayerState(int numDeaths)
+    private void ChangedActiveScene(Scene current, Scene next)
     {
+        if (next.name == GameLoader.instance._gameSceneName)
+        {
+            spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+            InitPlayerState(GameState.numDeaths);
+        } else
+        {
+            inventory.enabled = false;
+            healthPoints.enabled = false;
+            GetComponent<InteractableDetector>().enabled = false;
+        }
+    }
+
+    public void InitPlayerState(int numDeaths)
+    {
+        inventory.enabled = true;
+        healthPoints.enabled = true;
+        GetComponent<InteractableDetector>().enabled = true;
+
         healthPoints.Heal(healthPoints._maxHealth);
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
         playerMovement.ChangeBaseSpeed(numDeaths / 5f + 1f);
@@ -46,6 +66,7 @@ public class PlayerController : MonoBehaviour
         glitchedHP = numDeaths >= 1;
         appetiteEnabled = numDeaths < 2;
         axeEnabled = numDeaths < 4;
+        isWerewolf = numDeaths >= 4;
     }
 
     public void TakeDamage(int damage)
@@ -74,9 +95,11 @@ public class PlayerController : MonoBehaviour
 
     public void AttackAttempt(int damage)
     {
+        Debug.Log("Trying to attack!");
         GameObject enemy = FindClosestEnemy();
         if (enemy != null)
         {
+            Debug.Log("HIT!");
             enemy.GetComponent<HealthPoints>().TakeDamage(damage);
         }
     }

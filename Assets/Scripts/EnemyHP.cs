@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHP : HealthPoints
+public class EnemyHP : HealthPoints
 {
-    public static event Action OnPlayerDeath;
 
     public override void Die()
     {
         base.Die();
-        OnPlayerDeath?.Invoke();
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Destroy(gameObject, 1);
     }
 }
+

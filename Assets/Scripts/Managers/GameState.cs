@@ -6,23 +6,10 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
     public static int numDeaths = 0;  // relevant to wolf transformation
-    public static GameState instance { get; private set; }
 
-    private void Start()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void OnPlayerDeath()
+    public static void OnPlayerDeath()
     {
         numDeaths++;
+        Debug.Log("Player has died " + numDeaths + " times.");
     }
 }

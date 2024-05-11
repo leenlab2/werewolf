@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] public float angle;
 
     public GameObject playerRef;
+    public GameObject playerLife;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -24,26 +25,28 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float baseProb;
     [SerializeField] private float rangeDetect;
     [SerializeField] public float rangeCone;
-    [SerializeField] private float timeHidden;
+    [SerializeField] public float time;
 
     // Werewolf stats
     [SerializeField] private float _speed;
     [SerializeField] private float baseSpeed;
-    [SerializeField] private float _dmg = 0f;
-    [SerializeField] private int _health = 10;
+    [SerializeField] private int _dmg = 0;
     [SerializeField] private GameObject _enemy;
+    private EnemyHP healthPoints;
 
     private Rigidbody enemyBody;
     private Vector2 walkingDirection;
     public float changeDirectionInterval = 3f;
     private Coroutine moveCoroutine;
+    private bool isVelocityStopped = false;
 
     public enum State
     {
         Neutral,
         Searching,
         Aggro,
-        Allied
+        Allied,
+        Stunned
     }
 
     public State CurrentState { get; set; }
@@ -55,21 +58,29 @@ public class EnemyAI : MonoBehaviour
         CurrentState = newState;
     }
 
+    public void ChangeHuntingParameters(float probability, float detection, float cone, float stunTime)
+    {
+        probCorrect = probability;
+        rangeDetect = detection;
+        rangeCone = cone;
+        time = stunTime;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         probCorrect = baseProb;
         _speed = baseSpeed;
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerLife = GameObject.Find("Player");
         StartCoroutine(FOVRoutine());
 
 
         enemyBody = _enemy.GetComponent<Rigidbody>();
-
         walkingDirection = Vector2.zero;
-
-
         moveCoroutine = StartCoroutine(ChangeDirectionRoutine());
+
+        healthPoints = GetComponent<EnemyHP>();
     }
 
     private void OnDestroy()
@@ -157,7 +168,11 @@ public class EnemyAI : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     canSeePlayer = true;
-                    ChangeState(State.Aggro);
+                    if(CurrentState != State.Stunned)
+                    {
+                        ChangeState(State.Aggro);
+                    }
+                    
                 }
                 else
                 {
@@ -177,7 +192,7 @@ public class EnemyAI : MonoBehaviour
         #endregion
 
         #region NearChecks
-        if (nearChecks.Length != 0 && rangeChecks.Length == 0)
+        if (nearChecks.Length != 0 && rangeChecks.Length == 0 && CurrentState!= State.Stunned)
         {
             ChangeState(State.Searching);
         } else if(nearChecks.Length == 0)
@@ -216,8 +231,10 @@ public class EnemyAI : MonoBehaviour
                 }
             }else if (CurrentState == State.Aggro)
             {
-                _speed += 2f;
+                _speed += 5f;
                 FacePlayer();
+            } else if(CurrentState == State.Stunned) {
+                _speed = 0;
             }
 
 
@@ -250,11 +267,69 @@ public class EnemyAI : MonoBehaviour
         // Check if the collided object is in the specified collision layers
         if (((1 << collision.gameObject.layer) & collisionLayers) != 0)
         {
-            // Change direction to opposite
-            Vector3 newDirection = -enemyBody.velocity;
-            transform.LookAt(newDirection.normalized);
-            enemyBody.velocity = transform.forward * _speed;
+            Debug.Log("We had a collision");
+            if (collision.gameObject == playerLife)
+            {
+                AttackAttempt(_dmg);
+                StopAndResume(time);
+
+            }
+            else
+            {
+                // Change direction to opposite
+                Vector3 newDirection = -enemyBody.velocity;
+                newDirection.y = 0f;
+                transform.LookAt(newDirection.normalized);
+                enemyBody.velocity = transform.forward * _speed;
+            }
+            
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        healthPoints.TakeDamage(damage);
+        StopAndResume(time + 1f);
+    }
+
+    public void Heal(int amount)
+    {
+        healthPoints.Heal(amount);
+    }
+
+    private IEnumerator StopVelocityForDelay(float delay)
+    {
+        Debug.Log("Stopping");
+        ChangeState(State.Stunned);
+        Vector3 newDirection = -enemyBody.velocity;
+        enemyBody.velocity = newDirection * _speed/10;
+        yield return new WaitForSeconds(0.3f);
+
+        enemyBody.velocity = Vector3.zero;
+
+        // Wait for the specified delay
+        yield return new WaitForSeconds(delay);
+
+        // Restore the original velocity
+        ChangeState(State.Aggro);
+        isVelocityStopped = false;
+    }
+
+    // Example usage: Call this method to stop and resume velocity
+    public void StopAndResume(float stopDuration)
+    {
+        if (!isVelocityStopped)
+        {
+            StartCoroutine(StopVelocityForDelay(stopDuration));
+        }
+    }
+
+
+    public void AttackAttempt(int damage)
+    {
+        Debug.Log("Attacking the player");
+        playerLife.GetComponent<HealthPoints>().TakeDamage(damage);
+        
     }
 
 }
