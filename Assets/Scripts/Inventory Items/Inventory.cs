@@ -33,4 +33,21 @@ public class Inventory : MonoBehaviour
             currentSelected = _slots[0];
         }
     }
+
+    public void AddItem(Item item)
+    {
+        Slot slot = _slots.Find(s => s.item == item);
+
+        if (slot == null)
+        {
+            slot = new Slot();
+            slot.item = item;
+            slot.count = 1;
+            _slots.Add(slot);
+        }
+        else
+        {
+            slot.count++;
+        }
+    }
 }

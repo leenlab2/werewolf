@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance { get; private set; }
     private PlayerHP healthPoints;
     private PlayerMovement playerMovement;
-    private Inventory inventory;
+    public Inventory inventory;
 
     public bool isSneaking = false;
     public bool glitchedHP = false;
