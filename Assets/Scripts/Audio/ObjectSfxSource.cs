@@ -17,11 +17,18 @@ public class ObjectSfxSource : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         Item.OnItemUsed += PlayObjectUseSfx;
+        Item.OnItemPickedUp += PlayObjectPickupSfx;
     }
 
-    private void PlayObjectPickupSfx()
+    private void OnDestroy()
     {
-        if (pickupSound != null)
+        Item.OnItemUsed -= PlayObjectUseSfx;
+        Item.OnItemPickedUp -= PlayObjectPickupSfx;
+    }
+
+    private void PlayObjectPickupSfx(GameObject obj)
+    {
+        if (pickupSound != null && obj == gameObject)
         {
             _audioSource.clip = pickupSound;
             _audioSource.Play();

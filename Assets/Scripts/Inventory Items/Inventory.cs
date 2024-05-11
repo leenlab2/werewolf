@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [System.Serializable] public class Slot
 {
@@ -16,21 +17,51 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentSelected = _slots[0];
+        if (_slots.Count > 0)
+        {
+            currentSelected = _slots[0];
+        } else
+        {
+            currentSelected = null;
+        }
+        
     }
 
-    public void UseSelected()
+    public void UseSelected(InputAction.CallbackContext ctx)
     {
-        if (currentSelected.item == null)
+        if (currentSelected == null || currentSelected.item == null || !ctx.started)
             return;
 
+        Debug.Log("Using item " + currentSelected.item.name);
         currentSelected.item.Use();
         currentSelected.count--;
 
         if (currentSelected.count <= 0)
         {
             _slots.Remove(currentSelected);
-            currentSelected = _slots[0];
+            currentSelected = _slots.Count > 0 ? _slots[0] : null;
+        }
+    }
+
+    public void AddItem(Item item)
+    {
+        Slot slot = _slots.Find(s => s.item.GetType() == item.GetType());
+
+        if (slot == null)
+        {
+            slot = new Slot();
+            slot.item = item;
+            slot.count = 1;
+            _slots.Add(slot);
+        }
+        else
+        {
+            slot.count++;
+        }
+
+        if (currentSelected == null)
+        {
+            currentSelected = slot;
         }
     }
 }

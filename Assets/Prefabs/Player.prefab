@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 5155171430650391751}
   - component: {fileID: 2885775866275241082}
   - component: {fileID: 4468120145023640859}
+  - component: {fileID: 8886554032412416962}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -320,6 +321,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf87ca521fb24e94a9c0e5d955e50d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  inventory: {fileID: 0}
+  isSneaking: 0
+  glitchedHP: 0
+  appetiteEnabled: 1
+  axeEnabled: 1
 --- !u!114 &2885775866275241082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,11 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5414ef5ec05048f4fafe7c2c130fd909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slots:
-  - item: {fileID: 0}
-    count: 3
-  - item: {fileID: 0}
-    count: 0
+  _slots: []
 --- !u!114 &4468120145023640859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,3 +353,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+--- !u!114 &8886554032412416962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812848195167369802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd66c9f96ee3e148b80807180547191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPlayerReach: 5
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 64
