@@ -289,6 +289,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damage)
     {
         healthPoints.TakeDamage(damage);
+        StopAndResume(time + 1f);
     }
 
     public void Heal(int amount)
