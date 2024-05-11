@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         InitPlayerState(GameState.numDeaths);
     }
 
-    private void InitPlayerState(int numDeaths)
+    public void InitPlayerState(int numDeaths)
     {
         healthPoints.Heal(healthPoints._maxHealth);
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
