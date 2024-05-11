@@ -8,6 +8,9 @@ public class Food : Item
 
     public override void Use()
     {
-        PlayerController.instance.Heal(healAmount);
+        if (PlayerController.instance.appetiteEnabled)
+        {
+            PlayerController.instance.Heal(healAmount);
+        }
     }
 }

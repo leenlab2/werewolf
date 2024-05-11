@@ -1,9 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public static class GameState
+public class GameState : MonoBehaviour
 {
-    // for any state information we need to track
-    // keep variables public get private set
+    public static int numDeaths = 0;  // relevant to wolf transformation
+    public static GameState instance { get; private set; }
+
+    private void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void OnPlayerDeath()
+    {
+        numDeaths++;
+    }
 }

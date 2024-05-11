@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
         _speed = _speedBase;
     }
 
+    public void ChangeBaseSpeed(float factor)
+    {
+        _speedBase *= factor;
+        _speed = _speedBase;
+    }
+
     public void UpdatePlayerVelocity(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
@@ -58,10 +64,12 @@ public class PlayerMovement : MonoBehaviour
         if (ctx.performed)
         {
             _speed = 0.3f * _speedBase;
+            PlayerController.instance.isSneaking = true;
         }
         else if (ctx.canceled)
         {
             _speed = _speedBase;
+            PlayerController.instance.isSneaking = false;
         }
     }
 
