@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(PlayerHP))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Transform spawnPoint;
+    private Transform spawnPoint;
 
     public static PlayerController instance { get; private set; }
     private PlayerHP healthPoints;
@@ -34,7 +35,16 @@ public class PlayerController : MonoBehaviour
         inventory = GetComponent<Inventory>();
         playerMovement = FindAnyObjectByType<PlayerMovement>();
 
-        InitPlayerState(GameState.numDeaths);
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+    }
+
+    private void ChangedActiveScene(Scene current, Scene next)
+    {
+        if (next.name == GameLoader.instance._gameSceneName)
+        {
+            spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+            InitPlayerState(GameState.numDeaths);
+        }
     }
 
     private void InitPlayerState(int numDeaths)

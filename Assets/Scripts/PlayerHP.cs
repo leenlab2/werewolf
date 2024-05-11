@@ -8,6 +8,6 @@ public class PlayerHP : HealthPoints
     public override void Die()
     {
         base.Die();
-        GameState.instance.OnPlayerDeath();
+        GameState.OnPlayerDeath();
     }
 }
