@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInput))]
@@ -28,13 +31,37 @@ public class InputManager : MonoBehaviour
     {
         if (focus && SceneManager.GetActiveScene().name == GameLoader.instance._gameSceneName)
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            HideCursor();
         }
         else
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            ShowCursor();
         }
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        ShowCursor();
+        playerInput.actions.FindActionMap("Player").Disable();
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        HideCursor();
+        playerInput.actions.FindActionMap("Player").Enable();
+    }
+
+    private void HideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void ShowCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
