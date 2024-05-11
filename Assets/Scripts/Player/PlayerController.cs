@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(PlayerHP))]
 public class PlayerController : MonoBehaviour
@@ -10,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance { get; private set; }
     private PlayerHP healthPoints;
     private PlayerMovement playerMovement;
+    private Inventory inventory;
 
     public bool isSneaking = false;
     public bool glitchedHP = false;
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour
         }
 
         healthPoints = GetComponent<PlayerHP>();
+        inventory = GetComponent<Inventory>();
         playerMovement = FindAnyObjectByType<PlayerMovement>();
 
         InitPlayerState(GameState.numDeaths);
@@ -52,5 +56,28 @@ public class PlayerController : MonoBehaviour
     public void Heal(int amount)
     {
         healthPoints.Heal(amount);
+    }
+
+    private GameObject FindClosestEnemy()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 100))
+        {
+            if (hit.transform.gameObject.GetComponent<EnemyAI>())
+            {
+                return hit.transform.gameObject;
+            }
+        }
+
+        return null;
+    }
+
+    public void AttackAttempt(int damage)
+    {
+        GameObject enemy = FindClosestEnemy();
+        if (enemy != null)
+        {
+            enemy.GetComponent<HealthPoints>().TakeDamage(damage);
+        }
     }
 }
