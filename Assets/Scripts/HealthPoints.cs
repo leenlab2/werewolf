@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HealthPoints : MonoBehaviour
 {
-    [SerializeField] protected int _maxHealth;
+    [SerializeField] public int _maxHealth;
     protected int _currentHealth;
 
     protected void Start()
     {
-        _currentHealth = _maxHealth - 10;
+        _currentHealth = _maxHealth;
     }
 
     public void TakeDamage(int damage)
@@ -31,7 +31,7 @@ public class HealthPoints : MonoBehaviour
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log(gameObject.name + " has died.");
     }
