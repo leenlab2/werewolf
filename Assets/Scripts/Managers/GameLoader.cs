@@ -68,6 +68,7 @@ public class GameLoader : MonoBehaviour
     private void HandleVictory()
     {
         Debug.Log("The Player tried to escape!!!");
+        EndGame();
     }
 
     private IEnumerator ResetSequence()

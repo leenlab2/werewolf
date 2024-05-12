@@ -436,6 +436,10 @@ PrefabInstance:
       propertyPath: interactionCue
       value: 
       objectReference: {fileID: 1131611863}
+    - target: {fileID: 8886554032412416962, guid: ff69868210fc4af44a2436cb5fe9e671, type: 3}
+      propertyPath: maxPlayerReach
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -485,6 +489,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 462260834670856720}
+    - target: {fileID: 580102975855031260, guid: a32a0909a5afc2547bacadcc94acd706, type: 3}
+      propertyPath: _speedBase
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 885055937078343740, guid: a32a0909a5afc2547bacadcc94acd706, type: 3}
       propertyPath: m_Name
       value: Input Manager

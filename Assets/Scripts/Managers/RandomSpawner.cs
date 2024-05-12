@@ -43,6 +43,7 @@ public class RandomSpawner : MonoBehaviour
     {
         foreach (GameObject spawnPoint in spawnPoints)
         {
+            Debug.Log("Spawning at " + spawnPoint.name);
             int randomPrefab = Random.Range(0, prefabsToSpawn.Count);
             if (alwaysSpawn)
             {
