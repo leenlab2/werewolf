@@ -48,12 +48,12 @@ MonoBehaviour:
   _menuMusic: {fileID: 8300000, guid: 42697b2bed0c25c4584ea76283893fcd, type: 3}
   _gameOverMusic: {fileID: 8300000, guid: a0f967ab435d71b4fb5e628f97423e49, type: 3}
   backgroundMusicByStage:
-  - {fileID: 8300000, guid: 06f0ac247975619438f8a490822d7b39, type: 3}
-  - {fileID: 8300000, guid: 06f0ac247975619438f8a490822d7b39, type: 3}
-  - {fileID: 8300000, guid: 06f0ac247975619438f8a490822d7b39, type: 3}
-  - {fileID: 8300000, guid: 06f0ac247975619438f8a490822d7b39, type: 3}
-  - {fileID: 8300000, guid: 06f0ac247975619438f8a490822d7b39, type: 3}
-  - {fileID: 8300000, guid: 06f0ac247975619438f8a490822d7b39, type: 3}
+  - {fileID: 8300000, guid: 87d837860140f2d479df1eb0b96d97ef, type: 3}
+  - {fileID: 8300000, guid: fa23d945293b1244196b512dff52909d, type: 3}
+  - {fileID: 8300000, guid: 4cf4c33b3dfba5c49834cbfcb7226484, type: 3}
+  - {fileID: 8300000, guid: ffa3d0a9a6a1877428fb604254c447b9, type: 3}
+  - {fileID: 8300000, guid: f55f25de150f5804b8b33a275dd33ff7, type: 3}
+  - {fileID: 8300000, guid: f55f25de150f5804b8b33a275dd33ff7, type: 3}
   combatMusicByStage:
   - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
   - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
