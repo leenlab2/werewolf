@@ -104,4 +104,9 @@ public class PlayerController : MonoBehaviour
             enemy.GetComponent<HealthPoints>().TakeDamage(damage);
         }
     }
+
+    void Update()
+    {
+
+    }
 }
