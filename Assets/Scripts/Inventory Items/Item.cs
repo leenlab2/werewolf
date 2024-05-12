@@ -6,6 +6,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private bool isInventoryItem = false;
+    [SerializeField] public Sprite icon;
     [SerializeField] public bool consumable = false;
     public static event Action<GameObject> OnItemUsed;
     public static event Action<GameObject> OnItemPickedUp;

@@ -431,7 +431,7 @@ public partial class @Werewolf: IInputActionCollection2, IDisposable
                     ""name"": ""ScrollWheel"",
                     ""type"": ""PassThrough"",
                     ""id"": ""9b683f3c-6131-4ae5-96e2-66d106a72f66"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -752,7 +752,7 @@ public partial class @Werewolf: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""38c99815-14ea-4617-8627-164d27641299"",
-                    ""path"": ""<Mouse>/scroll"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",

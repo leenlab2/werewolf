@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerInput.actions.FindActionMap("Player").Enable();
         SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 

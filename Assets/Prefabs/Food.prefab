@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInventoryItem: 1
+  icon: {fileID: 21300000, guid: 3a6b91bb4542dcc4786f0d735deecdc3, type: 3}
   consumable: 1
   healAmount: 10
 --- !u!82 &8686576589703343658

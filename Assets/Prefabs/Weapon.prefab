@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInventoryItem: 1
+  icon: {fileID: 21300000, guid: 89205ae8b985d284e9efcdd5b83ee8ec, type: 3}
   consumable: 0
   damage: 15
   isAxe: 1
