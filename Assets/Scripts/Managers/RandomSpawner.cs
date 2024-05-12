@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomSpawner : MonoBehaviour
 {
 
-    public string spawnPointTag = "SpawnPoint";
+    public string spawnPointTag = "Spawner";
     public bool alwaysSpawn = true;
     GameObject[] spawnPoints;
 
