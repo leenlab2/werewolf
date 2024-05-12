@@ -21,6 +21,11 @@ public class RandomSpawner : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        PlayerHP.OnPlayerDeath -= HandlePlayerDeath;
+    }
+
     private void HandlePlayerDeath()
     {
         Debug.Log("Resetting enemies");

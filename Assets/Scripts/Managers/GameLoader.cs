@@ -52,6 +52,7 @@ public class GameLoader : MonoBehaviour
 
     private void HandleDeath()
     {
+        Debug.Log("Handling player death");
         if (GameState.numDeaths < 5)
         {
             GameState.OnPlayerDeath();
@@ -68,9 +69,12 @@ public class GameLoader : MonoBehaviour
         HUD.SetActive(false);
         yield return LoadSceneAndActivate(_gameOverSceneName);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
         StartCoroutine(LoadSceneAndActivate(_gameSceneName));
+        HUD.SetActive(true);
+
+        Debug.Log("Reset sequence complete");
     }
 
     private void EndGame()

@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
     public Slot currentSelected { get; private set; }
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         if (_slots.Count > 0)
         {
