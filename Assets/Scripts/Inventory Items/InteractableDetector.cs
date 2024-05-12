@@ -13,6 +13,8 @@ public class InteractableDetector : MonoBehaviour
     private Item detectedItem;
     private float sphereRadius = 0.2f;
 
+    [SerializeField] private GameObject interactionCue;
+
     public static event Action<Item> OnItemHitChange;
 
     private void FixedUpdate()
@@ -25,12 +27,14 @@ public class InteractableDetector : MonoBehaviour
         Debug.DrawRay(origin, direction * maxPlayerReach, Color.red);
 
         detectedItem = null;
+        interactionCue.SetActive(false);
         // Perform raycast
         if (Physics.SphereCast(originRay, sphereRadius, out hit, maxPlayerReach, interactableLayer))
         {
             if (hit.transform.parent.TryGetComponent(out Item item))
             {
                 detectedItem = item;
+                interactionCue.SetActive(true);
                 OnItemHitChange?.Invoke(detectedItem);
             }
         }

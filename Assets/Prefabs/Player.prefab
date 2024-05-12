@@ -564,14 +564,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4812848195167369802}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5414ef5ec05048f4fafe7c2c130fd909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 0}
-  selectedColor: {r: 1, g: 1, b: 1, a: 0.627451}
-  deselectedColor: {r: 1, g: 1, b: 1, a: 0.18039216}
+  selected: {fileID: 21300000, guid: c34dc1e31a16cd84e9058c14688c4a0c, type: 3}
+  deselected: {fileID: 21300000, guid: 952e0989b2706554eb8154378f546a25, type: 3}
   _slots: []
 --- !u!114 &4468120145023640859
 MonoBehaviour:
@@ -580,12 +580,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4812848195167369802}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e76dfca029a1d04eac1c296e727835e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  glow: {fileID: 0}
+  damageSplatter: {fileID: 0}
+  lowDamage: {fileID: 21300000, guid: 0340a5a3e955363489e228f6d6bdc45e, type: 3}
+  mediumDamage: {fileID: 21300000, guid: 9d80e25c8e5d88841882fe86511a6a2a, type: 3}
+  highDamage: {fileID: 21300000, guid: f050af6b5b1c576428d0fdeda201e709, type: 3}
 --- !u!114 &8886554032412416962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +598,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4812848195167369802}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bd66c9f96ee3e148b80807180547191, type: 3}
   m_Name: 

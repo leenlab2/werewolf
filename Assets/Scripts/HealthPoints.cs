@@ -12,7 +12,7 @@ public class HealthPoints : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         _currentHealth -= damage;
         if (_currentHealth <= 0)
@@ -22,7 +22,7 @@ public class HealthPoints : MonoBehaviour
         }
     }
 
-    public void Heal(int healAmount)
+    public virtual void Heal(int healAmount)
     {
         _currentHealth += healAmount;
         if (_currentHealth > _maxHealth)
