@@ -41,7 +41,7 @@ public class InteractableDetector : MonoBehaviour
         if (detectedItem != null && ctx.performed)
         {
             Debug.Log("Interacting with item " + detectedItem.gameObject.name);
-            detectedItem.Interact();
+            detectedItem.PickUp();
         }
     }
 }

@@ -29,9 +29,13 @@ public class InputManager : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        if (focus && SceneManager.GetActiveScene().name == GameLoader.instance._gameSceneName)
+        if (focus)
         {
-            HideCursor();
+            string activeScene = SceneManager.GetActiveScene().name;
+            if (activeScene == GameLoader.instance._gameSceneName)
+            {
+                HideCursor();
+            }
         }
         else
         {

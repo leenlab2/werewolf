@@ -34,13 +34,26 @@ public class Inventory : MonoBehaviour
 
         Debug.Log("Using item " + currentSelected.item.name);
         currentSelected.item.Use();
-        currentSelected.count--;
 
+        if (currentSelected.item.consumable)
+        {
+            currentSelected.count--;
+        }
+        
         if (currentSelected.count <= 0)
         {
             _slots.Remove(currentSelected);
             currentSelected = _slots.Count > 0 ? _slots[0] : null;
         }
+    }
+
+    public void RechargeFlashlight(InputAction.CallbackContext ctx)
+    {
+        if (currentSelected == null || typeof(Flashlight) != currentSelected.item.GetType())
+            return;
+
+        Flashlight flashlight = (Flashlight)currentSelected.item;
+        flashlight.RechargeBattery(!ctx.canceled);
     }
 
     public void AddItem(Item item)
