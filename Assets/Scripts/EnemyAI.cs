@@ -27,6 +27,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] public float rangeCone;
     [SerializeField] public float time;
 
+    public static event Action OnCombatEnter;
+    public static event Action OnCombatExit;
+
     // Werewolf stats
     [SerializeField] private float _speed;
     [SerializeField] private float baseSpeed;
@@ -56,15 +59,24 @@ public class EnemyAI : MonoBehaviour
 
     public void ChangeState(State newState)
     {
+        if(CurrentState == (State.Neutral || State.Searching) && newState = State.Aggro)
+        {
+            OnCombatEnter?.Invoke();
+        }else if(CurrentState == State.Aggro && newState = (State.Neutral || State.Searching))
+        {
+            OnCombatExit?.Invoke();
+        }
         CurrentState = newState;
+        
     }
 
-    public void ChangeHuntingParameters(float probability, float detection, float cone, float stunTime)
+    public void ChangeHuntingParameters(float probability, float detection, float cone, float stunTime, State newState)
     {
         probCorrect = probability;
         rangeDetect = detection;
         rangeCone = cone;
         time = stunTime;
+        ChangeState(newState);
     }
 
     // Start is called before the first frame update
@@ -215,6 +227,11 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Started this thing");
         while (true)
         {
+            if (CurrentState == State.Allied)
+            {
+                MoveInRandomDirection();
+
+            }
             if (CurrentState != State.Aggro)
             {
                 _speed = baseSpeed;

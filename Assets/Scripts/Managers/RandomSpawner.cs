@@ -25,6 +25,10 @@ public class RandomSpawner : MonoBehaviour
     {
         Debug.Log("Resetting enemies");
         // Implement game over logic or other actions upon player death
+        foreach (var gameObj in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(gameObj);
+        }
         spawnEnemies();
     }
 
