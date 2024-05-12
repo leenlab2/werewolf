@@ -7,9 +7,9 @@ public class GameLoader : MonoBehaviour
 {
     public static GameLoader instance;
 
-    [SerializeField] private string _menuSceneName;
+    [SerializeField] public string _menuSceneName;
     [SerializeField] public string _gameSceneName;
-    [SerializeField] private string _gameOverSceneName;
+    [SerializeField] public string _gameOverSceneName;
     [SerializeField] private GameObject HUD;
 
     private void Start()
