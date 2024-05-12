@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(PlayerHP))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] public Transform attachTransform;
     private Transform spawnPoint;
 
     public static PlayerController instance { get; private set; }

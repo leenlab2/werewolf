@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInventoryItem: 1
+  consumable: 0
   damage: 15
   isAxe: 1
 --- !u!82 &1244816977883754635
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edc6d16c30fd7e4089e7c8b3ef14115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: a10bfeab2851e434083952b9a08bd963, type: 3}
   usingSound: {fileID: 0}
   usedSound: {fileID: 0}
 --- !u!1 &6399161856252699620
