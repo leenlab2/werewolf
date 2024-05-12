@@ -13,6 +13,9 @@ public class Food : Item
         if (PlayerController.instance.appetiteEnabled)
         {
             PlayerController.instance.Heal(healAmount);
+        } else
+        {
+            RaiseItemError();
         }
     }
 }

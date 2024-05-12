@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable] public class SFXCollection
-{
-    public List<AudioClip> sfxCollection = new List<AudioClip>();
-    public string surfaceTag;
-}
-
 [RequireComponent(typeof(AudioSource))]
 public class SFXCollectionRandomizer : MonoBehaviour
 {
-    [SerializeField] private List<SFXCollection> sfxCollections = new List<SFXCollection>();
+    [System.Serializable]
+    public class SFXCollection
+    {
+        public List<AudioClip> sfxCollection = new List<AudioClip>();
+        public string surfaceTag;
+    }
+
+    [SerializeField] public List<SFXCollection> sfxCollections = new List<SFXCollection>();
 
     private AudioSource audioSource;
 
@@ -21,20 +23,29 @@ public class SFXCollectionRandomizer : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayRandomSFX()
+    public AudioClip GetRandomSFX(SFXCollection match)
     {
-        string currentSurfaceTag = GetCurrentSurfaceTag();
-        SFXCollection match = sfxCollections.Find(x => x.surfaceTag == currentSurfaceTag);
         if (match != null)
         {
             List<AudioClip> sfxCollection = match.sfxCollection;
 
             if (sfxCollection.Count > 0)
             {
-                int randomIndex = Random.Range(0, sfxCollection.Count);
-                audioSource.PlayOneShot(sfxCollection[randomIndex]);
+                int randomIndex = UnityEngine.Random.Range(0, sfxCollection.Count);
+                return sfxCollection[randomIndex];
             }
         }
+
+        return null;
+    }
+
+    public void PlayRandomSFX()
+    {
+        string currentSurfaceTag = GetCurrentSurfaceTag();
+        SFXCollection match = sfxCollections.Find(x => x.surfaceTag == currentSurfaceTag);
+        AudioClip audioClip = GetRandomSFX(match);
+
+        audioSource.PlayOneShot(audioClip);
     }
 
     private string GetCurrentSurfaceTag()

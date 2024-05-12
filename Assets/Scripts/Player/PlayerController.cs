@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
     {
         glitchedHP = numDeaths >= 1;
         appetiteEnabled = numDeaths < 2;
-        axeEnabled = numDeaths < 4;
         isWerewolf = numDeaths >= 4;
 
         inventory.enabled = true;

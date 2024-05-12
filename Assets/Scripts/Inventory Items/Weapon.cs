@@ -9,7 +9,17 @@ public class Weapon : Item
 
     public override void Use()
     {
-        if (isAxe && !PlayerController.instance.axeEnabled && !PlayerController.instance.isWerewolf) return;
+        base.Use();
+
+        if (isAxe && PlayerController.instance.isWerewolf) {
+            PlayerController.instance.inventory.RemoveItem(this);
+            RaiseItemError();
+            return;
+        } else if (!isAxe && !PlayerController.instance.isWerewolf)
+        {
+            RaiseItemError();
+            return;
+        }
 
         PlayerController.instance.AttackAttempt(damage);
     }

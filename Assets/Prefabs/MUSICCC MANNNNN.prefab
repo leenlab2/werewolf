@@ -55,12 +55,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f55f25de150f5804b8b33a275dd33ff7, type: 3}
   - {fileID: 8300000, guid: f55f25de150f5804b8b33a275dd33ff7, type: 3}
   combatMusicByStage:
-  - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
-  - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
-  - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
-  - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
-  - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
-  - {fileID: 8300000, guid: 8e8d92193dfd9c248bbb3cea654b9d43, type: 3}
+  - {fileID: 8300000, guid: ca79c2bcb8858bf47adf704efa6f240c, type: 3}
+  - {fileID: 8300000, guid: e31050c3fe37d0546bacde4804625d4c, type: 3}
+  - {fileID: 8300000, guid: 4e4042f05e2140549b53d127268d2bf1, type: 3}
+  - {fileID: 8300000, guid: 820fcfc29dbe1054abaea0c2900c2818, type: 3}
+  - {fileID: 8300000, guid: 1b7dc50f8766fc648ae144faf1e8b6a5, type: 3}
+  - {fileID: 8300000, guid: 1b7dc50f8766fc648ae144faf1e8b6a5, type: 3}
 --- !u!82 &2233451231777748136
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
