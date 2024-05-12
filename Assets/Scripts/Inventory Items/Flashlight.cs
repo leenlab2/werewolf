@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Flashlight : Item
 {
-    [SerializeField] private float batteryLife = 100f;
+    [SerializeField] private float maxBatteryLife = 100f;
     [SerializeField] private float batteryDrainRate = 1f;
     [SerializeField] private float batteryRechargeRate = 1f;
+
+    private Image batteryFill;
 
     public bool isOn = false;
     private bool recharging = false;
     private Light pointLight;
 
+    private float batteryLife;
+
     private void Start()
     {
         pointLight = GetComponentInChildren<Light>();
+        batteryLife = maxBatteryLife;
+
+        batteryFill = GameObject.Find("Battery").transform.GetChild(0).GetComponent<Image>();
     }
 
     public void Toggle()
@@ -80,5 +88,7 @@ public class Flashlight : Item
         {
             batteryLife += batteryRechargeRate * Time.deltaTime;
         }
+
+        batteryFill.fillAmount = batteryLife / maxBatteryLife;
     }
 }
