@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool appetiteEnabled = true;
     [HideInInspector] public bool axeEnabled = true;
     [HideInInspector] public bool isWerewolf = false;
+    [SerializeField] public Item claws;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         playerMovement = FindAnyObjectByType<PlayerMovement>();
 
         SceneManager.activeSceneChanged += ChangedActiveScene;
+
     }
 
     private void ChangedActiveScene(Scene current, Scene next)
@@ -69,6 +71,11 @@ public class PlayerController : MonoBehaviour
         healthPoints.Heal(healthPoints._maxHealth);
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
         playerMovement.ChangeBaseSpeed(numDeaths / 5f + 1f);
+
+        if(isWerewolf)
+        {
+            inventory.AddItem(claws);
+        }
     }
 
     public void TakeDamage(int damage)

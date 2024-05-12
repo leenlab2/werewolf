@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 965500896672468520}
   - component: {fileID: 5497349565661739903}
   - component: {fileID: 9160206588923022361}
-  - component: {fileID: 9051130572944744324}
   - component: {fileID: 551897718813544633}
   m_Layer: 0
   m_Name: Werewolf
@@ -95,7 +94,7 @@ MonoBehaviour:
   rangeCone: 10
   time: 3
   _speed: 1
-  baseSpeed: 1
+  baseSpeed: 0
   _dmg: 100
   _enemy: {fileID: 4029047750904144835}
   animator: {fileID: 0}
@@ -113,27 +112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
---- !u!65 &9051130572944744324
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4029047750904144835}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0735149, y: 0.7189851, z: 2.002418}
-  m_Center: {x: 1.230649, y: 0.14050737, z: -0.4606379}
 --- !u!65 &551897718813544633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -153,8 +131,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0735149, y: 0.7189851, z: 2.002418}
-  m_Center: {x: 1.230649, y: 0.14050737, z: -0.4606379}
+  m_Size: {x: 1.2144558, y: 0.7189851, z: 2.002418}
+  m_Center: {x: -0.030953676, y: 0.14050736, z: -0.4606379}
 --- !u!1001 &6792057453128865675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e2e83ef86717f547b1d6e862fc070af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.23
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e2e83ef86717f547b1d6e862fc070af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -193,7 +171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e2e83ef86717f547b1d6e862fc070af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.53684723
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e2e83ef86717f547b1d6e862fc070af, type: 3}
       propertyPath: m_LocalRotation.w
