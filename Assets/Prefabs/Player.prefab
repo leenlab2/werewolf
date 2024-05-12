@@ -570,8 +570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 0}
-  selectedColor: {r: 1, g: 1, b: 1, a: 0.627451}
-  deselectedColor: {r: 1, g: 1, b: 1, a: 0.18039216}
+  selected: {fileID: 21300000, guid: c34dc1e31a16cd84e9058c14688c4a0c, type: 3}
+  deselected: {fileID: 21300000, guid: 952e0989b2706554eb8154378f546a25, type: 3}
   _slots: []
 --- !u!114 &4468120145023640859
 MonoBehaviour:

@@ -15,8 +15,8 @@ using static UnityEditor.Progress;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private GameObject UI;
-    [SerializeField] private Color selectedColor;
-    [SerializeField] private Color deselectedColor;
+    [SerializeField] private Sprite selected;
+    [SerializeField] private Sprite deselected;
     [SerializeField] protected List<Slot> _slots = new List<Slot>();
     public Slot currentSelected { get; private set; }
 
@@ -98,7 +98,7 @@ public class Inventory : MonoBehaviour
             if (i >= _slots.Count || _slots[i].item == null)
             {
                 itemUI.gameObject.SetActive(false);
-                slotPanelUI.GetComponent<Image>().color = deselectedColor;
+                slotPanelUI.GetComponent<Image>().sprite = deselected;
             }
             else
             {
@@ -108,11 +108,11 @@ public class Inventory : MonoBehaviour
 
                 if (_slots[i] == currentSelected)
                 {
-                    slotPanelUI.GetComponent<Image>().color = selectedColor;
+                    slotPanelUI.GetComponent<Image>().sprite = selected;
                 }
                 else
                 {
-                    slotPanelUI.GetComponent<Image>().color = deselectedColor;
+                    slotPanelUI.GetComponent<Image>().sprite = deselected;
                 }
             }
         }
