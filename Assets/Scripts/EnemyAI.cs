@@ -33,7 +33,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private int _dmg = 0;
     [SerializeField] private GameObject _enemy;
     private EnemyHP healthPoints;
-    public Animator animator;
 
     private Rigidbody enemyBody;
     private Vector2 walkingDirection;
@@ -70,8 +69,6 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
-
         probCorrect = baseProb;
         _speed = baseSpeed;
         playerRef = GameObject.FindGameObjectWithTag("Player");
@@ -174,9 +171,8 @@ public class EnemyAI : MonoBehaviour
                     if(CurrentState != State.Stunned)
                     {
                         ChangeState(State.Aggro);
-                        animator.SetBool("Running", true);
                     }
-
+                    
                 }
                 else
                 {
@@ -199,11 +195,9 @@ public class EnemyAI : MonoBehaviour
         if (nearChecks.Length != 0 && rangeChecks.Length == 0 && CurrentState!= State.Stunned)
         {
             ChangeState(State.Searching);
-            animator.SetBool("Running", false);
         } else if(nearChecks.Length == 0)
         {
             ChangeState(State.Neutral);
-            animator.SetBool("Running", false);
         }
 
         #endregion
@@ -307,7 +301,6 @@ public class EnemyAI : MonoBehaviour
     {
         Debug.Log("Stopping");
         ChangeState(State.Stunned);
-        animator.SetBool("Stunned", true);
         Vector3 newDirection = -enemyBody.velocity;
         enemyBody.velocity = newDirection * _speed/10;
         yield return new WaitForSeconds(0.3f);
@@ -319,8 +312,6 @@ public class EnemyAI : MonoBehaviour
 
         // Restore the original velocity
         ChangeState(State.Aggro);
-        animator.SetBool("Running", true);
-        animator.SetBool("Stunned", false);
         isVelocityStopped = false;
     }
 
@@ -337,7 +328,6 @@ public class EnemyAI : MonoBehaviour
     public void AttackAttempt(int damage)
     {
         Debug.Log("Attacking the player");
-        animator.SetTrigger("Attack");
         playerLife.GetComponent<HealthPoints>().TakeDamage(damage);
         
     }
