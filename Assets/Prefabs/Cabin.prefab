@@ -84,6 +84,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabin_Textured (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6901445961243430062, guid: ab2d0e4e95501df4e95f03e5b91a8543, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739885438713950554, guid: ab2d0e4e95501df4e95f03e5b91a8543, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

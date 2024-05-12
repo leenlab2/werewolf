@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c0f84004937029341b2e019ca41ecc4f
+guid: 570118edf7a0c9043a2f8daf75c24f69
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: metal
-    second: {fileID: 2100000, guid: 408f57767516d004895a3b54b2c85f32, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: phonebooth
-    second: {fileID: 2100000, guid: f575eb22c2d83bd4fa54c8ce445e3159, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: phonebooth02
-    second: {fileID: 2100000, guid: 9b09cecce32d58e4898ed7b98015facc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: phonebooth03
-    second: {fileID: 2100000, guid: cbdf985ec914a3f42881b291aa587565, type: 2}
+      name: EnviromentPattern
+    second: {fileID: 2100000, guid: fec1ea203bc0e024c8fe8fa9bdacf326, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -55,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.01
+    globalScale: 0.4
     meshCompression: 0
     addColliders: 1
     useSRGBMaterialColor: 1
@@ -110,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.01
+    globalScale: 0.004
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
