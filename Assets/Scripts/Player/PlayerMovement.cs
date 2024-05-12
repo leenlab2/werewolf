@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 walkingDirection;
     private Vector2 cameraDirection;
     private float _speed;
+    private Footsteps _footsteps;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         walkingDirection = Vector2.zero;
         cameraDirection = Vector2.zero;
         _speed = _speedBase;
+        _footsteps = _player.GetComponentInChildren<Footsteps>();
     }
 
     public void ChangeBaseSpeed(float factor)
@@ -78,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         // Move player
         Vector3 movement = _player.transform.TransformDirection(new Vector3(walkingDirection.x, 0, walkingDirection.y)) * _speed;
         playerBody.velocity = movement;
+        _footsteps.PlayFootsteps(playerBody.velocity.magnitude);
 
         _player.transform.Rotate(new Vector3(0, cameraDirection.x, 0));
 
