@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 965500896672468520}
   - component: {fileID: 5497349565661739903}
   - component: {fileID: 9160206588923022361}
+  - component: {fileID: 9051130572944744324}
   m_Layer: 0
   m_Name: Werewolf
   m_TagString: Untagged
@@ -43,7 +44,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4029047750904144835}
   serializedVersion: 4
-  m_Mass: 100
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -85,17 +86,18 @@ MonoBehaviour:
     m_Bits: 64
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
   canSeePlayer: 0
   probCorrect: 0.3
   baseProb: 0.3
   rangeDetect: 15
   rangeCone: 10
-  time: 0
+  time: 3
   _speed: 1
   baseSpeed: 1
-  _dmg: 0
+  _dmg: 100
   _enemy: {fileID: 4029047750904144835}
+  animator: {fileID: 0}
   changeDirectionInterval: 3
 --- !u!114 &9160206588923022361
 MonoBehaviour:
@@ -110,6 +112,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
+--- !u!65 &9051130572944744324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029047750904144835}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0735149, y: 0.7189851, z: 2.002418}
+  m_Center: {x: 1.230649, y: 0.14050737, z: -0.4606379}
 --- !u!1001 &6792057453128865675
 PrefabInstance:
   m_ObjectHideFlags: 0
