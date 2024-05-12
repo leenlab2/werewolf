@@ -16,8 +16,19 @@ public class RandomSpawner : MonoBehaviour
     {
         spawnPoints = GameObject.FindGameObjectsWithTag(spawnPointTag);
         spawnEnemies();
-        
+
+        PlayerHP.OnPlayerDeath += HandlePlayerDeath;
+
     }
+
+    private void HandlePlayerDeath()
+    {
+        Debug.Log("Resetting enemies");
+        // Implement game over logic or other actions upon player death
+        spawnEnemies();
+    }
+
+
 
     public void spawnEnemies()
     {
