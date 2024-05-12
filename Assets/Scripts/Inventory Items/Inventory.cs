@@ -120,6 +120,7 @@ public class Inventory : MonoBehaviour
 
     public void SelectNext(InputAction.CallbackContext ctx)
     {
+        Debug.Log("Selecting next item");
         if (!ctx.performed || _slots.Count == 0) { return; }
 
         float scrollDirection = ctx.action.ReadValue<float>();

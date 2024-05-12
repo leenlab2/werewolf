@@ -58,4 +58,13 @@ public class PlayerHP : HealthPoints
 
         damageSplatter.enabled = _currentHealth < _maxHealth;
     }
+
+    private void FixedUpdate()
+    {
+        // slowly take damage over time
+        if (Time.time % 1 == 0)
+        {
+            TakeDamage(1);
+        }
+    }
 }

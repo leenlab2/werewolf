@@ -10,6 +10,7 @@ public class GameLoader : MonoBehaviour
     [SerializeField] private string _menuSceneName;
     [SerializeField] public string _gameSceneName;
     [SerializeField] private string _gameOverSceneName;
+    [SerializeField] private GameObject HUD;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class GameLoader : MonoBehaviour
     public void StartGame()
     {
         StartCoroutine(LoadSceneAndActivate(_gameSceneName));
+        HUD.SetActive(true);
     }
 
     public void LoadMenu()
@@ -63,6 +65,7 @@ public class GameLoader : MonoBehaviour
 
     private IEnumerator ResetSequence()
     {
+        HUD.SetActive(false);
         yield return LoadSceneAndActivate(_gameOverSceneName);
 
         yield return new WaitForSeconds(3);
