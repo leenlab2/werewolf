@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8532908554001937297}
   - component: {fileID: 1244816977883754635}
   - component: {fileID: 6495241992955286331}
+  - component: {fileID: 3520548868881399652}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -70,7 +71,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 74
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -160,9 +161,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edc6d16c30fd7e4089e7c8b3ef14115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSound: {fileID: 8300000, guid: a10bfeab2851e434083952b9a08bd963, type: 3}
+  pickupSound: {fileID: 8300000, guid: 089e9e75b0fa25b4fb78d0d4970b7962, type: 3}
   usingSound: {fileID: 0}
   usedSound: {fileID: 0}
+  errorSound: {fileID: 8300000, guid: 3cd7a0e567a423c41bc70938ec7ba7de, type: 3}
+  _sfxCollectionRandomizer: {fileID: 3520548868881399652}
+--- !u!114 &3520548868881399652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443466497083187643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c839bf040df65478685d25a49c9984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxCollections:
+  - sfxCollection:
+    - {fileID: 8300000, guid: 547f3b28cf74f5847b34fb1610bacdd8, type: 3}
+    - {fileID: 8300000, guid: f0a06b7c38462c74481f24c83e88c70e, type: 3}
+    - {fileID: 8300000, guid: ebdf211cd10f41d4989efb317b07d464, type: 3}
+    - {fileID: 8300000, guid: 6f28edfa8623d974db0fddad0315b0fb, type: 3}
+    - {fileID: 8300000, guid: cbc0659bbd7cacd498326521ab559f32, type: 3}
+    surfaceTag: 
 --- !u!1 &6399161856252699620
 GameObject:
   m_ObjectHideFlags: 0

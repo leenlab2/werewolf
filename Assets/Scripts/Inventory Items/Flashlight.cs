@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class Flashlight : Item
 
     private float batteryLife;
 
+    public static event Action<bool> OnFlashlightCharge;
+
     private void Start()
     {
         pointLight = GetComponentInChildren<Light>();
@@ -38,9 +41,13 @@ public class Flashlight : Item
         if (batteryLife > 0 && isOn)
         {
             pointLight.enabled = true;
-        } else
+        } else if (!isOn)
         {
             pointLight.enabled = false;
+        } else if (batteryLife <= 0 && isOn)
+        {
+            pointLight.enabled = false;
+            RaiseItemError();
         }
     }
 
@@ -58,10 +65,12 @@ public class Flashlight : Item
         {
             crank.SetActive(true);
             recharging = true;
+            OnFlashlightCharge?.Invoke(true);
         } else
         {
             crank.SetActive(false);
             recharging = false;
+            OnFlashlightCharge?.Invoke(false);
         }
     }
 

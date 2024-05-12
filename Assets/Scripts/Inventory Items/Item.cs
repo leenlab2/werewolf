@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     [SerializeField] public bool consumable = false;
     public static event Action<GameObject> OnItemUsed;
     public static event Action<GameObject> OnItemPickedUp;
+    public static event Action<GameObject> OnItemError;
 
     public virtual void PickUp()
     {
@@ -28,5 +29,10 @@ public class Item : MonoBehaviour
     {
         OnItemUsed?.Invoke(gameObject);
         // Do something
+    }
+
+    protected void RaiseItemError()
+    {
+        OnItemError?.Invoke(gameObject);
     }
 }

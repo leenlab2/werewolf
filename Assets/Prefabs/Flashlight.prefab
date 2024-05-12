@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8804845545503220779}
   - component: {fileID: 6921866533679454748}
-  - component: {fileID: 5196370974137458661}
-  - component: {fileID: 3317385371637580457}
+  - component: {fileID: 6934784252997486342}
+  - component: {fileID: 7377131685676122776}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -51,11 +51,11 @@ MonoBehaviour:
   isInventoryItem: 1
   icon: {fileID: 21300000, guid: 57e5cad792d18c141b280b00a7640c26, type: 3}
   consumable: 0
-  batteryLife: 100
+  maxBatteryLife: 100
   batteryDrainRate: 1
   batteryRechargeRate: 1
   isOn: 0
---- !u!82 &5196370974137458661
+--- !u!82 &6934784252997486342
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,7 +73,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 65
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -151,7 +151,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3317385371637580457
+--- !u!114 &7377131685676122776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,12 +160,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290853415232422750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6edc6d16c30fd7e4089e7c8b3ef14115, type: 3}
+  m_Script: {fileID: 11500000, guid: a4ff652e52664c74c9efd16042fdc94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSound: {fileID: 8300000, guid: a10bfeab2851e434083952b9a08bd963, type: 3}
-  usingSound: {fileID: 8300000, guid: aff1d0bea0ed30946b477e5fb84c4564, type: 3}
+  pickupSound: {fileID: 8300000, guid: 1880e97c4dcd1af42aad6e6c359d4497, type: 3}
+  usingSound: {fileID: 8300000, guid: eee4704a8c3d81246846eb1555a51305, type: 3}
   usedSound: {fileID: 0}
+  errorSound: {fileID: 8300000, guid: 636663149ccf3714f9ee4ef66d89909e, type: 3}
+  _sfxCollectionRandomizer: {fileID: 0}
+  chargingSfx: {fileID: 8300000, guid: 819224bd7f8df2b439ec41e3ddb12470, type: 3}
 --- !u!1 &2315347152063446244
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,21 +9,34 @@ public class ObjectSfxSource : MonoBehaviour
     [SerializeField] private AudioClip pickupSound;
     [SerializeField] private AudioClip usingSound;
     [SerializeField] private AudioClip usedSound;
+    [SerializeField] private AudioClip errorSound;
 
-    private AudioSource _audioSource;
+    protected AudioSource _audioSource;
+    [SerializeField]  private SFXCollectionRandomizer _sfxCollectionRandomizer;
 
-    private void Start()
+    protected virtual void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        _sfxCollectionRandomizer = GetComponent<SFXCollectionRandomizer>();
 
         Item.OnItemUsed += PlayObjectUseSfx;
         Item.OnItemPickedUp += PlayObjectPickupSfx;
+        Item.OnItemError += PlayErrorSfx;
     }
 
     private void OnDestroy()
     {
         Item.OnItemUsed -= PlayObjectUseSfx;
         Item.OnItemPickedUp -= PlayObjectPickupSfx;
+    }
+
+    private void PlayErrorSfx(GameObject obj)
+    {
+        if (errorSound != null && obj == gameObject)
+        {
+            _audioSource.clip = errorSound;
+            _audioSource.Play();
+        }
     }
 
     private void PlayObjectPickupSfx(GameObject obj)
@@ -44,6 +57,11 @@ public class ObjectSfxSource : MonoBehaviour
         if (usingSound != null)
         {
             clips.Add(usingSound);
+        } else if (_sfxCollectionRandomizer != null)
+        {
+            AudioClip audioClip = _sfxCollectionRandomizer.GetRandomSFX(_sfxCollectionRandomizer.sfxCollections[0]);
+            Debug.Log("Playing random sfx: " + audioClip.name);
+            clips.Add(audioClip);
         }
 
         if (usedSound != null)

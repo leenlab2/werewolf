@@ -91,6 +91,18 @@ public class Inventory : MonoBehaviour
         UpdateInventoryUI();
     }
 
+    public void RemoveItem(Item item)
+    {
+        Slot slot = _slots.Find(s => s.item.GetType() == item.GetType());
+
+        if (slot == null) return;
+
+        _slots.Remove(currentSelected);
+        currentSelected = _slots.Count > 0 ? _slots[0] : null;
+
+        UpdateInventoryUI();
+    }
+
     private void UpdateInventoryUI()
     {
         for (int i = 0; i < 3; i++)
