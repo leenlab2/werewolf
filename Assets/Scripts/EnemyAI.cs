@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -59,10 +60,10 @@ public class EnemyAI : MonoBehaviour
 
     public void ChangeState(State newState)
     {
-        if(CurrentState == (State.Neutral || State.Searching) && newState = State.Aggro)
+        if((CurrentState == State.Neutral || CurrentState == State.Searching) && newState == State.Aggro)
         {
             OnCombatEnter?.Invoke();
-        }else if(CurrentState == State.Aggro && newState = (State.Neutral || State.Searching))
+        }else if(CurrentState == State.Aggro && (newState == State.Neutral || newState == State.Searching))
         {
             OnCombatExit?.Invoke();
         }
@@ -244,7 +245,7 @@ public class EnemyAI : MonoBehaviour
                     probCorrect = baseProb;
                 }
 
-                if (Random.value < probCorrect)
+                if (UnityEngine.Random.value < probCorrect)
                 {
                     FacePlayer();
                 }
@@ -275,7 +276,7 @@ public class EnemyAI : MonoBehaviour
     private void MoveInRandomDirection()
     {
         // Generate a random direction
-        Vector3 randomDirection = Random.insideUnitSphere.normalized;
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere.normalized;
 
         // Ignore the y-axis to move only on the X-Z plane
         randomDirection.y = 0f;

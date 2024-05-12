@@ -48,6 +48,7 @@ public class InputManager : MonoBehaviour
         Time.timeScale = 0;
         ShowCursor();
         playerInput.actions.FindActionMap("Player").Disable();
+        MusicSource.instance.PauseMusic();
     }
 
     public void ResumeGame()
@@ -55,6 +56,7 @@ public class InputManager : MonoBehaviour
         Time.timeScale = 1;
         HideCursor();
         playerInput.actions.FindActionMap("Player").Enable();
+        MusicSource.instance.UnpauseMusic();
     }
 
     private void HideCursor()
