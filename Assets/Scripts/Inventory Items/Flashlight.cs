@@ -25,7 +25,9 @@ public class Flashlight : Item
         batteryLife = maxBatteryLife;
 
         GameObject HUD = GameObject.Find("HUD");
-        batteryFill = HUD.transform.Find("Battery").GetChild(0).GetComponent<Image>();
+        Transform battery = HUD.transform.Find("Battery");
+        battery.gameObject.SetActive(false);
+        batteryFill = battery.GetChild(0).GetComponent<Image>();
         crank = HUD.transform.Find("Crank").gameObject;
     }
 
@@ -72,6 +74,8 @@ public class Flashlight : Item
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         transform.Find("Model").gameObject.layer = 0;
+
+        batteryFill.transform.parent.gameObject.SetActive(true);
     }
 
     public override void Use()

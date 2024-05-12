@@ -149,8 +149,8 @@ public class PlayerHP : HealthPoints
 
        // // slowly take damage over time
        //if (Time.time % 1 == 0)
-       // {
+       // { 
        //     TakeDamage(1);
-       // }
+       //}
     }
 }

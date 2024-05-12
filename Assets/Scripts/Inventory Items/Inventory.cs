@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        _slots.Clear();
         if (_slots.Count > 0)
         {
             currentSelected = _slots[0];
@@ -30,6 +31,8 @@ public class Inventory : MonoBehaviour
         {
             currentSelected = null;
         }
+
+        UpdateInventoryUI();
         
     }
 

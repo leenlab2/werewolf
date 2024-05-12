@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e76dfca029a1d04eac1c296e727835e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 100
   glow: {fileID: 0}
   damageSplatter: {fileID: 0}
   hpBar: {fileID: 0}
