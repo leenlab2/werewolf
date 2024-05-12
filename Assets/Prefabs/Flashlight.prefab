@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInventoryItem: 1
+  icon: {fileID: 21300000, guid: 57e5cad792d18c141b280b00a7640c26, type: 3}
   consumable: 0
   batteryLife: 100
   batteryDrainRate: 1
