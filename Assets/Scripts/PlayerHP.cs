@@ -59,12 +59,22 @@ public class PlayerHP : HealthPoints
         damageSplatter.enabled = _currentHealth < _maxHealth;
     }
 
-    //private void FixedUpdate()
-    //{
+    private void Regenerate()
+    {
+        if (!PlayerController.instance.appetiteEnabled && (Time.time % 2 == 0))
+        {
+            Heal(1);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Regenerate();
+
     //    // slowly take damage over time
     //   if (Time.time % 1 == 0)
     //    {
     //        TakeDamage(1);
     //    }
-    //}
+    }
 }
