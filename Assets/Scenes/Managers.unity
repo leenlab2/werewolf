@@ -417,6 +417,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2119394828}
     - target: {fileID: 4468120145023640859, guid: ff69868210fc4af44a2436cb5fe9e671, type: 3}
+      propertyPath: hpBar
+      value: 
+      objectReference: {fileID: 8075082048487732393}
+    - target: {fileID: 4468120145023640859, guid: ff69868210fc4af44a2436cb5fe9e671, type: 3}
+      propertyPath: glitchedHPBar
+      value: 
+      objectReference: {fileID: 8075082048487732392}
+    - target: {fileID: 4468120145023640859, guid: ff69868210fc4af44a2436cb5fe9e671, type: 3}
       propertyPath: damageSplatter
       value: 
       objectReference: {fileID: 1934489634}
@@ -661,6 +669,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6606872151740530532, guid: 705171bfe931f2c47b6511c0021ab594, type: 3}
   m_PrefabInstance: {fileID: 8075082048487732389}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8075082048487732392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8673532625745424856, guid: 705171bfe931f2c47b6511c0021ab594, type: 3}
+  m_PrefabInstance: {fileID: 8075082048487732389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8075082048487732393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7003409046005386600, guid: 705171bfe931f2c47b6511c0021ab594, type: 3}
+  m_PrefabInstance: {fileID: 8075082048487732389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8557176321750054246
 PrefabInstance:
   m_ObjectHideFlags: 0

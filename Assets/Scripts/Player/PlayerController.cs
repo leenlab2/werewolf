@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (next.name == GameLoader.instance._gameSceneName)
         {
+            Debug.Log("Initializing Player State");
             spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
             InitPlayerState(GameState.numDeaths);
         } else
@@ -56,6 +57,11 @@ public class PlayerController : MonoBehaviour
 
     public void InitPlayerState(int numDeaths)
     {
+        glitchedHP = numDeaths >= 1;
+        appetiteEnabled = numDeaths < 2;
+        axeEnabled = numDeaths < 4;
+        isWerewolf = numDeaths >= 4;
+
         inventory.enabled = true;
         healthPoints.enabled = true;
         GetComponent<InteractableDetector>().enabled = true;
@@ -63,11 +69,6 @@ public class PlayerController : MonoBehaviour
         healthPoints.Heal(healthPoints._maxHealth);
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
         playerMovement.ChangeBaseSpeed(numDeaths / 5f + 1f);
-
-        glitchedHP = numDeaths >= 1;
-        appetiteEnabled = numDeaths < 2;
-        axeEnabled = numDeaths < 4;
-        isWerewolf = numDeaths >= 4;
     }
 
     public void TakeDamage(int damage)

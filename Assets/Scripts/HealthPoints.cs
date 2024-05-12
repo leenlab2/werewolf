@@ -7,14 +7,16 @@ public class HealthPoints : MonoBehaviour
     [SerializeField] public int _maxHealth;
     protected int _currentHealth;
 
-    protected void Start()
+    protected virtual void OnEnable()
     {
         _currentHealth = _maxHealth;
     }
 
     public virtual void TakeDamage(int damage)
     {
+        
         _currentHealth -= damage;
+
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
