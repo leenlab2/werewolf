@@ -11,6 +11,7 @@ public class Flashlight : Item
     [SerializeField] private float batteryRechargeRate = 1f;
 
     private Image batteryFill;
+    private GameObject crank;
 
     public bool isOn = false;
     private bool recharging = false;
@@ -23,7 +24,9 @@ public class Flashlight : Item
         pointLight = GetComponentInChildren<Light>();
         batteryLife = maxBatteryLife;
 
-        batteryFill = GameObject.Find("Battery").transform.GetChild(0).GetComponent<Image>();
+        GameObject HUD = GameObject.Find("HUD");
+        batteryFill = HUD.transform.Find("Battery").GetChild(0).GetComponent<Image>();
+        crank = HUD.transform.Find("Crank").gameObject;
     }
 
     public void Toggle()
@@ -51,9 +54,11 @@ public class Flashlight : Item
     {
         if (!isOn && charging)
         {
+            crank.SetActive(true);
             recharging = true;
         } else
         {
+            crank.SetActive(false);
             recharging = false;
         }
     }
@@ -82,6 +87,7 @@ public class Flashlight : Item
         if (batteryLife <= 0 && isOn)
         {
             Toggle();
+            crank.SetActive(true);
         }
 
         if (recharging)
