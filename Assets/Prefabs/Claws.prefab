@@ -287,9 +287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxCollections:
   - sfxCollection:
-    - {fileID: 8300000, guid: 9a5c1e36d2a04b146938cfaba45b7844, type: 3}
-    - {fileID: 8300000, guid: 1f34faaf46d2adb4d83075b97c000157, type: 3}
-    - {fileID: 8300000, guid: 8bbdcc7cfa439944dae7267f8eef9f0d, type: 3}
-    - {fileID: 8300000, guid: 035da576f85e96448bf562909ce257b5, type: 3}
-    - {fileID: 8300000, guid: 1b5d05aaa671dc94888798db41d5249a, type: 3}
+    - {fileID: 8300000, guid: cf95cf109be73fd4b80e64cdf077f7f0, type: 3}
+    - {fileID: 8300000, guid: c8b3a13fe3d0742439c8c48af638f9db, type: 3}
+    - {fileID: 8300000, guid: d9ad42b0c51c6ac4793a94eb6c313497, type: 3}
+    - {fileID: 8300000, guid: ba84a3aa5d2b1ca47a134c65e726c592, type: 3}
+    - {fileID: 8300000, guid: e69f88b55aa17c649b7cc3c357695f21, type: 3}
     surfaceTag: 
