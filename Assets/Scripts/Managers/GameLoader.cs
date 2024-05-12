@@ -26,6 +26,7 @@ public class GameLoader : MonoBehaviour
         StartCoroutine(LoadSceneAndActivate(_menuSceneName));
 
         PlayerHP.OnPlayerDeath += HandleDeath;
+        Phone.OnPlayerCall += HandleVictory;
     }
 
     private void OnDestroy()
@@ -62,6 +63,11 @@ public class GameLoader : MonoBehaviour
         {
             EndGame();
         }
+    }
+
+    private void HandleVictory()
+    {
+        Debug.Log("The Player tried to escape!!!");
     }
 
     private IEnumerator ResetSequence()
