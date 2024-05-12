@@ -1,17 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class AmbienceSource : MonoBehaviour
+public class AmbienceSource : SFXCollectionRandomizer
 {
-    [SerializeField] private AudioClip forestAmbience;
-    [SerializeField] private AudioClip streetAmbience;
-
-    private AudioSource _audioSource;
+    private bool isGameScene = false;
 
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.Play();
+        SceneManager.activeSceneChanged += OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene current, Scene next)
+    {
+        if (next.name == GameLoader.instance._gameSceneName)
+        {
+            isGameScene = true;
+            StartCoroutine(LoopAmbience());
+        }
+        else
+        {
+            audioSource.Stop();
+            isGameScene = false;
+        }
+    }
+
+    private IEnumerator LoopAmbience()
+    {
+        while (isGameScene)
+        {
+            PlayRandomSFX();
+            if (audioSource.clip == null)
+            {
+                yield return new WaitForSeconds(1);
+            }
+            else
+            {
+                yield return new WaitForSeconds(audioSource.clip.length);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ public class SFXCollectionRandomizer : MonoBehaviour
 
     [SerializeField] public List<SFXCollection> sfxCollections = new List<SFXCollection>();
 
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
 
     private void Awake()
     {
@@ -45,10 +45,14 @@ public class SFXCollectionRandomizer : MonoBehaviour
         SFXCollection match = sfxCollections.Find(x => x.surfaceTag == currentSurfaceTag);
         AudioClip audioClip = GetRandomSFX(match);
 
-        audioSource.PlayOneShot(audioClip);
+        if (audioClip != null)
+        {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
     }
 
-    private string GetCurrentSurfaceTag()
+    protected string GetCurrentSurfaceTag()
     {
         int layerMask = LayerMask.GetMask("Surface");
         RaycastHit hit;
