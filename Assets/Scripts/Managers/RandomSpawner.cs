@@ -12,8 +12,9 @@ public class RandomSpawner : MonoBehaviour
     public List<GameObject> prefabsToSpawn;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        Debug.Log("We are here");
         spawnPoints = GameObject.FindGameObjectsWithTag(spawnPointTag);
         spawnEnemies();
 
@@ -43,12 +44,14 @@ public class RandomSpawner : MonoBehaviour
     {
         foreach (GameObject spawnPoint in spawnPoints)
         {
-            Debug.Log("Spawning at " + spawnPoint.name);
+           
             int randomPrefab = Random.Range(0, prefabsToSpawn.Count);
             if (alwaysSpawn)
             {
+               
                 GameObject pts = Instantiate(prefabsToSpawn[randomPrefab]);
                 pts.transform.position = spawnPoint.transform.position;
+                Debug.Log(pts + "Spawning at " + spawnPoint.name);
             }
             else
             {
